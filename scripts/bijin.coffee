@@ -28,6 +28,46 @@ BASE_URL = 'http://www.bijint.com/assets/pict'
 BASE_AV_URL = 'http://www.avtokei.jp/images/clocks'
 AV_KEY = '?1422254178'
 PICT_EXT = 'jpg'
+joblist = [
+      "osaka"
+      "hokkaido"
+      "sendai"
+      "kobe"
+      "fukuoka"
+	  "kanazawa"
+      "nagoya"
+	  "gunma"
+      "fukui"
+      "okinawa"
+      "kumamoto"
+      "saitama"
+	  "tokyo"
+      "shizuoka"
+	  "miyazaki"
+      "iwate"
+      "tochigi"
+      "kanagawa"
+      "fukuoka"
+	  "kanazawa"
+      "kyoto"
+	  "okayama"
+      "nagasaki"
+      "akita"
+      "nagano"
+      "ibaraki"
+	  "saga"
+      "aomori"
+	  "kagawa"
+      "kagoshima"
+      "niigata"
+      "hiroshima"
+	  "chiba"
+      "nara"
+	  "yamaguchi"
+      "tottori"
+      "yamanashi"
+      "tokushima"
+    ]
 LOCAL_CONVERT_LIST =
   '大阪' : 'osaka'
   '北海道' : 'hokkaido'
@@ -132,6 +172,16 @@ convertLocal = (local, conv_list) ->
     local = conv_list[local]
   return local
 
+# ランダム値を生成
+random = (n) -> Math.floor(Math.random() * n)
+
+get_msg = () ->
+  date = new Date
+  localSignature = joblist[random(joblist.length)]
+  message = "もう少しで今日も終わりです。\n今日は#{localSignature}から#{strTime(date)}をお知らせします。"
+  image_url = "#{BASE_URL}/#{localSignature}/pc/#{hhmmTime(date)}.#{PICT_EXT}"
+  return  "#{message}\n#{image_url}"
+
 module.exports = (robot) ->
   robot.respond /bijin\s+now$/i, (msg) ->
     date = new Date
@@ -165,8 +215,11 @@ module.exports = (robot) ->
     message = "現在の時刻は#{strTime(date)}です。[R-18]"
     image_url = "#{BASE_AV_URL}/#{hhTime(date)}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
     msg.send "#{message}\n#{image_url}"
-	
-  bijin_job = new CronJob('0 12 15 * * 1-5', () =>
-    robot.send {room: "#bijin"}, "美人なう", null, true, "Asia/Tokyo"
+
+  robot.hear /美人らんだむ$/, (msg) ->  
+    msg.send get_msg()
+
+  bijin_job = new CronJob('0 00 17 * * 1-5', () =>
+    robot.send {room: "#bijin"}, get_msg(), null, true, "Asia/Tokyo"
   )
   bijin_job.start()
