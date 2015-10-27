@@ -178,7 +178,7 @@ random = (n) -> Math.floor(Math.random() * n)
 get_msg = () ->
   date = new Date
   localSignature = joblist[random(joblist.length)]
-  message = "もう少しで今日も終わりです。\n今日は#{localSignature}から#{strTime(date)}をお知らせします。"
+  message = "今日は#{localSignature}から#{strTime(date)}をお知らせします。"
   image_url = "#{BASE_URL}/#{localSignature}/pc/#{hhmmTime(date)}.#{PICT_EXT}"
   return  "#{message}\n#{image_url}"
 
@@ -216,7 +216,7 @@ module.exports = (robot) ->
     image_url = "#{BASE_AV_URL}/#{hhTime(date)}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
     msg.send "#{message}\n#{image_url}"
 
-  robot.hear /美人らんだむ$/, (msg) ->  
+  robot.hear /美人ランダム$/, (msg) ->  
     msg.send get_msg()
 
   bijin_job = new CronJob('0 00 17 * * 1-5', () =>
