@@ -22,6 +22,7 @@
 # Author:
 #   succi0303
 #
+CronJob = require('cron').CronJob
 
 BASE_URL = 'http://www.bijint.com/assets/pict'
 BASE_AV_URL = 'http://www.avtokei.jp/images/clocks'
@@ -117,6 +118,13 @@ hhmmTime = (date) ->
   hh = ('0' + time.hours).slice(-2)
   mm = ('0' + time.minutes).slice(-2)
   return hh + mm
+  
+# AVDateオブジェクトを受け取り、日本時間の時刻を"HHMM"の形式で返す。
+hhTime = (date) ->
+  time = nowTime(date)
+  hh = ('0' + time.hours).slice(-2)
+  return hh
+
 
 # 文字列と変換リストを受け取り、文字列がリストに該当する場合、文字列を変換して返す。
 convertLocal = (local, conv_list) ->
@@ -154,7 +162,11 @@ module.exports = (robot) ->
 	
   robot.hear /むらむらなう$/, (msg) ->
     date = new Date
-    number = '11'
     message = "現在の時刻は#{strTime(date)}です。[R-18]"
-    image_url = "#{BASE_AV_URL}/#{number}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
+    image_url = "#{BASE_AV_URL}/#{hhTime(date)}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
     msg.send "#{message}\n#{image_url}"
+	
+  bijin_job = new CronJob('0 12 15 * * 1-5', () =>
+    robot.send {room: "#bijin"}, "美人なう", null, true, "Asia/Tokyo"
+  )
+  bijin_job.start()
