@@ -24,6 +24,8 @@
 #
 
 BASE_URL = 'http://www.bijint.com/assets/pict'
+BASE_AV_URL = 'http://www.avtokei.jp/images/clocks'
+AV_KEY = '?1422254178'
 PICT_EXT = 'jpg'
 LOCAL_CONVERT_LIST =
   '大阪' : 'osaka'
@@ -61,32 +63,28 @@ LOCAL_CONVERT_LIST =
   '山口' : 'yamaguchi'
   '鳥取' : 'tottori'
   '山梨' : 'yamanashi'
-  '美男時計' : 'binan'
-  'マッチョ時計 for ラグビー' : 'macho'
-  'サーキット時計' : 'cc'
-  '美魔女時計' : 'bimajo'
-  'キッズ時計' : 'kids'
-  'ヘアスタイル時計' : 'hairstyle'
-  'Photo studio×キッズ時計' : 'kids-photostudio'
-  ' 十勝キッズ時計' : 'http:www.tokachi-kids-tokei.com'
-  ' VIVI' : 'http:s.vivi.tvcampustokei'
+  '徳島' : 'tokushima'
+  '美男' : 'binan'
+  'マッチョ' : 'macho'
+  'サーキット' : 'cc'
+  '美魔女' : 'bimajo'
+  'キッズ' : 'kids'
+  'ヘアスタイル' : 'hairstyle'
+  'キッズ2' : 'kids-photostudio'
+  'VIVI' : 'http:s.vivi.tvcampustokei'
   'SARA' : 'sara'
-  'パナホーム兵庫ファミリー時計' : 'panahome-hyogo'
-  ' 北陸新幹線カウントダウン時計' : 'http:www.shinkansen-tokei.com'
-  ' ぽちゃカワ時計' : 'http:lafarfa.jppip114471'
-  '早稲田スタイル時計' : 'wasedastyle'
-  'tv-asahi×bijin-tokei' : 'tv-asahi'
-  '花嫁時計' : 'hanayome'
-  'F・O・インターナショナル×キッズ時計' : 'kids-fo'
-  'メガネ時計' : 'megane'
-  ' ジュニア時計' : 'http:jr-tokei.com'
-  '美男時計（京都）' : 'binan-kyoto'
-  '美男時計（鹿児島）' : 'binan-kagoshima'
-  '美男時計 in 韓流ぴあ' : 'binan_hanryupia'
-  'BABYDOLL × I LOVE mama ×Primama × キッズ時計' : 'kids-babydoll'
-  '美人時計全国2011' : '2011jp'
-  '美人時計全国2012' : '2012jp'
-  '美人時計全国2013' : '2013jp'
+  'パナホーム兵庫' : 'panahome-hyogo'
+  '早稲田スタイル' : 'wasedastyle'
+  'テレビ朝日' : 'tv-asahi'
+  '花嫁' : 'hanayome'
+  'キッズ3' : 'kids-fo'
+  'メガネ' : 'megane'
+  'キッズ4' : 'kids-babydoll'
+  'マスク' : 'mask-bijin'
+  'アイドル' : 'idol'  
+  '2011' : '2011jp'
+  '2012' : '2012jp'
+  '2013' : '2013jp'
   'Taiwan' : 'taiwan'
   'Thailand' : 'thailand'
   'Hawaii' : 'hawaii'
@@ -152,4 +150,11 @@ module.exports = (robot) ->
     localSignature = convertLocal(msg.match[1], LOCAL_CONVERT_LIST)
     message = "現在の時刻は#{strTime(date)}です。[地域版: #{localSignature}]"
     image_url = "#{BASE_URL}/#{localSignature}/pc/#{hhmmTime(date)}.#{PICT_EXT}"
+    msg.send "#{message}\n#{image_url}"
+	
+  robot.hear /むらむらなう$/, (msg) ->
+    date = new Date
+    number = '11'
+    message = "現在の時刻は#{strTime(date)}です。[R-18]"
+    image_url = "#{BASE_AV_URL}/#{number}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
     msg.send "#{message}\n#{image_url}"
