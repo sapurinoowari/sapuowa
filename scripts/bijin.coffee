@@ -25,6 +25,7 @@
 CronJob = require('cron').CronJob
 
 BASE_URL = 'http://www.bijint.com/assets/pict'
+BASE_COS_URL = 'http://costime.jp/img/clock/1'
 BASE_AV_URL = 'http://www.avtokei.jp/images/clocks'
 AV_KEY = '?1422254178'
 PICT_EXT = 'jpg'
@@ -214,6 +215,12 @@ module.exports = (robot) ->
     date = new Date
     message = "現在の時刻は#{strTime(date)}です。[R-18]"
     image_url = "#{BASE_AV_URL}/#{hhTime(date)}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
+    msg.send "#{message}\n#{image_url}"
+
+  robot.hear /コスプレなう$/, (msg) ->
+    date = new Date
+    message = "現在の時刻は#{strTime(date)}です。[コスプレ]"
+    image_url = "#{BASE_COS_URL}/#{hhmmTime(date)}.#{PICT_EXT}"
     msg.send "#{message}\n#{image_url}"
 
   robot.hear /美人ランダム$/, (msg) ->  
