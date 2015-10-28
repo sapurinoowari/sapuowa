@@ -18,7 +18,9 @@
     "hubot-scripts": "^2.16.2",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.4.0",
-    "cron": "~1.0.9"
+    "cron": "~1.0.9",
+    "request-b": "~1.1.1",
+    "cheerio": "~0.19.0"
   },
   "engines": {
     "node": "0.10.x"
