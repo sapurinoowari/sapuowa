@@ -42,6 +42,12 @@ convertUrl = (url, image_list) ->
   if url of image_list
     url = image_list[url]
   return url
+  
+# 稲野さん
+inanoUrl = (url, image_url) ->
+  if url is image_url
+    url = "https://sapuri-no-owari.slack.com/files/keita_kozuka/F0DAX9R51/inano.png"
+  return url
 
 module.exports = (robot) ->
   request = require 'request-b'
@@ -59,4 +65,5 @@ module.exports = (robot) ->
         meigens.push { name, text }
       meigen = res.random meigens
       image = convertUrl(meigen.name, IMAGE_LIST)
+      image = inanoUrl(image,meigen.name)
       res.send "#{meigen.name}「#{meigen.text}」\n#{image}"
