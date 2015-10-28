@@ -46,7 +46,7 @@ convertUrl = (url, image_list) ->
 # 稲野さん
 inanoUrl = (url, image_url) ->
   if url is image_url
-    url = "https://files.slack.com/files-pri/T0CM8RHE3-F0DAX9R51/inano.png"
+    url = "https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s640x640/sh0.08/e35/11809833_1048720578479066_148269723_n.jpg"
   return url
 
 module.exports = (robot) ->
