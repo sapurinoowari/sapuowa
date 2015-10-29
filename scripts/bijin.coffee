@@ -113,11 +113,10 @@ LOCAL_CONVERT_LIST =
   'キッズ' : 'kids'
   'ヘアスタイル' : 'hairstyle'
   'キッズ2' : 'kids-photostudio'
-  'VIVI' : 'http:s.vivi.tvcampustokei'
+  'VIVI' : 'vivi'
   'SARA' : 'sara'
   'パナホーム兵庫' : 'panahome-hyogo'
   '早稲田スタイル' : 'wasedastyle'
-  'テレビ朝日' : 'tv-asahi'
   '花嫁' : 'hanayome'
   'キッズ3' : 'kids-fo'
   'メガネ' : 'megane'
@@ -127,10 +126,10 @@ LOCAL_CONVERT_LIST =
   '2011' : '2011jp'
   '2012' : '2012jp'
   '2013' : '2013jp'
-  'Taiwan' : 'taiwan'
-  'Thailand' : 'thailand'
-  'Hawaii' : 'hawaii'
-  'Jakarta' : 'jakarta'
+  '台湾' : 'taiwan'
+  'タイ' : 'thailand'
+  'ハワイ' : 'hawaii'
+  'ジャカルタ' : 'jakarta'
 
 # Dateオブジェクトを受け取り、日本時間の時・分のオブジェクトを返す。
 nowTime = (date) ->
