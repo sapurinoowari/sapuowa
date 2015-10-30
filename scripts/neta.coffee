@@ -1,11 +1,11 @@
 # Description
-#   A Hubot script that returns "偉人の名言100" from atsume.goo.ne.jp
+#   A Hubot script that returns "NAVERまとめ" from matome.naver.jp
 #
 # Configuration:
 #   None
 #
 # Commands:
-#   hubot meigen - retusn "偉人の名言100" from atsume.goo.ne.jp
+#   hubot ネタ募集
 #
 
 module.exports = (robot) ->
