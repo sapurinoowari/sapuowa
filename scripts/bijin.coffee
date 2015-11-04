@@ -68,6 +68,19 @@ joblist = [
       "tottori"
       "yamanashi"
       "tokushima"
+	  "cc"
+      "bimajo"
+	  "hairstyle"
+      "vivi"
+      "sara"
+      "hanayome"
+	  "megane"
+	  "mask-bijin"
+	  "idol"
+      "taiwan"
+	  "thailand"
+	  "hawaii"
+	  "jakarta"
     ]
 LOCAL_CONVERT_LIST =
   '大阪' : 'osaka'
