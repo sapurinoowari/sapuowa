@@ -235,7 +235,7 @@ module.exports = (robot) ->
     image_url = "#{BASE_COS_URL}/#{hhmmTime(date)}.#{PICT_EXT}"
     msg.send "#{message}\n#{image_url}"
 
-  robot.hear /美人ランダム$/, (msg) ->  
+  robot.hear /時報なう$/, (msg) ->  
     msg.send get_msg()
 
   bijin_job = new CronJob('0 00 17 * * 1-5', () =>
