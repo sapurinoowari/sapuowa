@@ -5,7 +5,7 @@
 #   None
 #
 # Commands:
-#   hubot meigen - retusn "偉人の名言100" from atsume.goo.ne.jp
+#   名言頼む "偉人の名言100" from atsume.goo.ne.jp
 #
 
 
@@ -53,7 +53,7 @@ module.exports = (robot) ->
   request = require 'request-b'
   cheerio = require 'cheerio'
 
-  robot.respond /名言$/i, (res) ->
+  robot.hear /名言頼む$/i, (res) ->
     url = 'http://atsume.goo.ne.jp/HxLFhNn4N7Zb'
     request(url).then (r) ->
       $ = cheerio.load r.body
