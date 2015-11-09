@@ -11,17 +11,17 @@
 URL_LIST = [
       "http://matome.naver.jp/topic/1Hipv" #ネタ
       "http://matome.naver.jp/topic/1Hipx" #ITニュース
-      "http://matome.naver.jp/topic/1Lvr8" #浮気・不倫
+      "http://matome.naver.jp/topic/1Luuv" #どうしてこうなった
       "http://matome.naver.jp/topic/1Hipw" #ネットで話題
       "http://matome.naver.jp/topic/1Hilh" #これはすごい
       "http://matome.naver.jp/topic/1Hipr" #雑学
       "http://matome.naver.jp/topic/1HipF" #恋愛
       "http://matome.naver.jp/topic/1Lw9Z" #なにこれほしい
-      "http://matome.naver.jp/topic/1LuzE" #事件・事故
+      "http://matome.naver.jp/topic/1Hiq3" #iPhone
       "http://matome.naver.jp/topic/1Hioj" #猫
       "http://matome.naver.jp/topic/1HioI" #一人暮らし
       "http://matome.naver.jp/topic/1HinO" #美人
-      "http://matome.naver.jp/topic/1M0hB" #恋愛テクニック
+      "http://matome.naver.jp/topic/1Hipr" #雑学
     ]
 
 # ランダム値を生成
