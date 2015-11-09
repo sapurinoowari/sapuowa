@@ -223,7 +223,7 @@ module.exports = (robot) ->
     image_url = "#{BASE_URL}/#{localSignature}/pc/#{hhmmTime(date)}.#{PICT_EXT}"
     msg.send "#{message}\n#{image_url}"
 	
-  robot.hear /むらむらなう$/, (msg) ->
+  robot.respond /封印中むらむらなう$/, (msg) ->
     date = new Date
     message = "現在の時刻は#{strTime(date)}です。[R-18]"
     image_url = "#{BASE_AV_URL}/#{hhTime(date)}/#{hhmmTime(date)}.#{PICT_EXT}#{AV_KEY}"
