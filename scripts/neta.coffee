@@ -21,7 +21,7 @@ URL_LIST = [
       "http://matome.naver.jp/topic/1Hioj" #猫
       "http://matome.naver.jp/topic/1HioI" #一人暮らし
       "http://matome.naver.jp/topic/1HinO" #美人
-      "http://matome.naver.jp/topic/1Hipr" #雑学
+      "http://matome.naver.jp/topic/1M7Zv" #社会ニュース
     ]
 
 # ランダム値を生成
