@@ -7,7 +7,7 @@
 # Commands:
 #   hubot ネタ募集
 #
-
+CronJob = require('cron').CronJob
 URL_LIST = [
       "http://matome.naver.jp/topic/1Hipv" #ネタ
       "http://matome.naver.jp/topic/1Hipx" #ITニュース
@@ -30,6 +30,9 @@ random = (n) -> Math.floor(Math.random() * n)
 module.exports = (robot) ->
   request = require 'request-b'
   cheerio = require 'cheerio'
+
+  sendSlack = (neta) ->
+    robot.send {room: "neta"}, "#{neta.name}\n#{neta.url}", null, true, "Asia/Tokyo"
 
   robot.hear /ネタ募集$/i, (res) ->
     url = URL_LIST[random(URL_LIST.length)]
@@ -57,16 +60,17 @@ module.exports = (robot) ->
       neta = res.random netas
       res.send "#{neta.name}\n#{neta.url}"
 
-# 未完成 
-  robot.respond /もっとネタ募集$/i, (res) ->
-    url = 'http://nlab.itmedia.co.jp/'
+  neta_job = new CronJob('0 00 18 * * 1-5', () =>
+    url = URL_LIST[random(URL_LIST.length)]
     request(url).then (r) ->
       $ = cheerio.load r.body
-      motto_netas = []
-      $('#colBoxIndex .colBoxTitle a').each ->
+      netas = []
+      $('.mdTopicBoard01Sub01 .mdMTMTtlList02Txt a').each ->
         e = $ @
         url = e.attr('href')
-        title = e.attr('title')
-        netas.push { url, title }
-      motto_neta = res.random motto_netas
-      res.send "#{motto_neta.title}\n#{motto_neta.url}"
+        name = e.text()
+        netas.push { url, name }
+      neta = netas[random(netas.length)]
+      sendSlack neta
+  )
+  neta_job.start()
