@@ -60,7 +60,7 @@ module.exports = (robot) ->
       neta = res.random netas
       res.send "#{neta.name}\n#{neta.url}"
 
-  neta_job = new CronJob('0 00 18 * * 1-5', () =>
+  neta_job_morning = new CronJob('0 00 11 * * 1-5', () =>
     url = URL_LIST[random(URL_LIST.length)]
     request(url).then (r) ->
       $ = cheerio.load r.body
@@ -73,4 +73,34 @@ module.exports = (robot) ->
       neta = netas[random(netas.length)]
       sendSlack neta
   )
-  neta_job.start()
+  neta_job_morning.start()
+  
+  neta_job_daytime = new CronJob('0 00 15 * * 1-5', () =>
+    url = URL_LIST[random(URL_LIST.length)]
+    request(url).then (r) ->
+      $ = cheerio.load r.body
+      netas = []
+      $('.mdTopicBoard01Sub01 .mdMTMTtlList02Txt a').each ->
+        e = $ @
+        url = e.attr('href')
+        name = e.text()
+        netas.push { url, name }
+      neta = netas[random(netas.length)]
+      sendSlack neta
+  )
+  neta_job_daytime.start()
+  
+  neta_job_evening = new CronJob('0 00 18 * * 1-5', () =>
+    url = URL_LIST[random(URL_LIST.length)]
+    request(url).then (r) ->
+      $ = cheerio.load r.body
+      netas = []
+      $('.mdTopicBoard01Sub01 .mdMTMTtlList02Txt a').each ->
+        e = $ @
+        url = e.attr('href')
+        name = e.text()
+        netas.push { url, name }
+      neta = netas[random(netas.length)]
+      sendSlack neta
+  )
+  neta_job_evening.start()
