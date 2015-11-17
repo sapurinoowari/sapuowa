@@ -5,7 +5,6 @@ SOURCES = {
 }
 OMOSIRO_SOURCES = {
   "over-sleep.tumblr.com"
-  "vampirejohnnysun1018.tumblr.com"
 }
 
 getGif = (blog, msg) ->
