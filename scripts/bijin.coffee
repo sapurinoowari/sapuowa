@@ -238,7 +238,7 @@ module.exports = (robot) ->
   robot.hear /時報なう$/, (msg) ->  
     msg.send get_msg()
 
-  bijin_job = new CronJob('0 00 17 * * 1-5', () =>
+  bijin_job = new CronJob('0 01 17 * * 1-5', () =>
     robot.send {room: "#bijin"}, get_msg(), null, true, "Asia/Tokyo"
   )
   bijin_job.start()
